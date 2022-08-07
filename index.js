@@ -7,7 +7,9 @@ const operators = document.querySelectorAll('.operator');
 const equals = document.querySelector('.equals')
 let operation;
 let firstNum;
-let lastPressedIsOperator = false;
+let operatorPressed = false;
+let lastOperatorPressed; 
+let result;
 upperDisplay.textContent = '';
 lowerDisplay.textContent = '';
 
@@ -20,10 +22,22 @@ numbers.forEach((number) => {
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
         firstNum = upperDisplay.textContent;
-        operation = operator.textContent;
-        upperDisplay.textContent += operation;
+        if(operatorPressed === true){
+            upperDisplay.textContent = upperDisplay.textContent.replace(lastOperatorPressed, operator.textContent)
+        }
+        else{
+            operation = operator.textContent;
+            upperDisplay.textContent += operation;
+        }
+        lastOperatorPressed = operator.textContent;
+        operatorPressed = true;
     })
 })
+
+equals.addEventListener('click', () => {
+    
+})
+
 
 function add(a, b) {
     return a+b;
