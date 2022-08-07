@@ -1,4 +1,9 @@
 body{
+    background-color: #eee;
+}
+
+.wrapper{
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,4 +11,93 @@ body{
 
 .container{
     background-color: #aaa;
+    width: 400px;
+    height: 490px;
+    border: 2px #333 solid;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#clear{
+    background-color: #faa;
+    padding: 20px 60px;
+    flex: 1;
+    font-size: 17px;
+}
+
+#delete{
+    background-color: #aaf;
+    padding: 20px 60px;
+    flex: 1;
+    font-size: 17px;
+}
+
+button{
+    background-color: #eee;
+    border: 2px #333 solid;
+    border-radius: 5px;
+    padding: 20px 30px;
+    flex: 1;
+    font-size: 15px;
+}
+
+.display{
+    background-color: #eee;
+    border: 2px #333 solid;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 0;
+    padding: 20px;
+    gap: 10px;
+}
+
+.upperDisplay{
+    font-size: 20px;
+    height: 23px;
+}
+
+.lowerDisplay{
+    font-size: 40px;
+    height: 47px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.firstRow{
+    display: flex;
+    gap: 10px;
+}
+
+.secondRow{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.thirdRow{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.fourthRow{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.fifthRow{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+button:hover{
+    background-color: rgb(212, 212, 212);
 }
