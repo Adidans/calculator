@@ -81,6 +81,9 @@ clear.addEventListener('click', function clear(){
     lowerDisplay.textContent = '';
 })
 
+del.addEventListener('click', () => {
+})
+
 function add(a, b) {
     return parseInt(a)+parseInt(b);
 }
@@ -91,6 +94,18 @@ function multiply(a,b) {
     return a*b;
 }
 function divide(a,b) {
+    if (b === "0"){
+        alert("Can't divide by 0");
+        operation = '';
+        firstNum = '';
+        secondNum = '';
+        operatorPressed = false;
+        waitingForSecondNum = false;
+        lastOperatorPressed = '';
+        result = '';
+        upperDisplay.textContent = '';
+        lowerDisplay.textContent = '';
+    }
     return a/b;
 }
 
