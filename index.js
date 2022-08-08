@@ -23,7 +23,6 @@ numbers.forEach((number) => {
         }
         else{
             secondNum += number.textContent;
-            waitingForSecondNum = false;
         }
     })
 })
@@ -39,10 +38,6 @@ operators.forEach((operator) => {
             upperDisplay.textContent += operation;
         }
 
-        if(lowerDisplay.textContent !== ''){
-            lowerDisplay.textContent = operate(firstNum, secondNum, lastOperatorPressed);
-            firstNum = operate(firstNum, secondNum, lastOperatorPressed);
-        }
         operatorPressed = true;
         waitingForSecondNum = true;
         lastOperatorPressed = operator.textContent;
