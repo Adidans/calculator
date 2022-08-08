@@ -101,3 +101,11 @@ button{
 button:hover{
     background-color: rgb(212, 212, 212);
 }
+
+#clear:hover{
+    background-color: rgb(218, 147, 147);
+}
+
+#delete:hover{
+    background-color: rgb(144, 144, 218);
+}
