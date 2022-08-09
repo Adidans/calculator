@@ -5,6 +5,7 @@ const clear = document.querySelector('#clear');
 const del = document.querySelector('#delete');
 const operators = document.querySelectorAll('.operator');
 const equals = document.querySelector('.equals')
+const dot = document.querySelector('.dot');
 let operation;
 let firstNum = '';
 let secondNum = '';
@@ -25,6 +26,7 @@ numbers.forEach((number) => {
         else{
             secondNum += number.textContent;
         }
+        dot.disabled = false;
     })
 })
 
@@ -39,7 +41,7 @@ operators.forEach((operator) => {
             upperDisplay.textContent += operation;
         }
 
-        if (operator.textContent === '-' && waitingForSecondNum === false){
+        if (operator.textContent === '-' && waitingForSecondNum === false && operatorPressed === true){
             firstNum = '0';
             upperDisplay.textContent += firstNum;
             upperDisplay.textContent = upperDisplay.textContent.replace('-', '');
@@ -69,6 +71,7 @@ operators.forEach((operator) => {
         operatorPressed = true;
         waitingForSecondNum = true;
         equalsPressed = false;
+        dot.disabled = false;
         lastOperatorPressed = operator.textContent;
     })
 })
@@ -76,6 +79,7 @@ operators.forEach((operator) => {
 equals.addEventListener('click', () => {
     result = operate(firstNum, secondNum, lastOperatorPressed);
     if(secondNum === ''){
+        equalsPressed = false;
         operation = '';
         firstNum = '';
         secondNum = '';
@@ -92,9 +96,11 @@ equals.addEventListener('click', () => {
     equalsPressed = true;
     operatorPressed = false;
     waitingForSecondNum = true;
+    dot.disabled = false;
 })
 
 clear.addEventListener('click', function clear(){
+    dot.disabled = false;
     operation = '';
     firstNum = '';
     secondNum = '';
@@ -102,12 +108,15 @@ clear.addEventListener('click', function clear(){
     waitingForSecondNum = false;
     lastOperatorPressed = '';
     result = '';
+    equalsPressed = false;
     upperDisplay.textContent = '';
     lowerDisplay.textContent = '';
 })
 
 del.addEventListener('click', () => {
+
 })
+
 
 function add(a, b) {
     return parseFloat(a)+parseFloat(b);
