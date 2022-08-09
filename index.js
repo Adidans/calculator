@@ -11,6 +11,7 @@ let secondNum = '';
 let operatorPressed = false;
 let waitingForSecondNum = false;
 let lastOperatorPressed;
+let equalsPressed = false;
 let result;
 upperDisplay.textContent = '';
 lowerDisplay.textContent = '';
@@ -47,7 +48,16 @@ operators.forEach((operator) => {
             waitingForSecondNum = true;
         }
 
-        if (operatorPressed === true && waitingForSecondNum === true) {
+        if (operatorPressed === true && waitingForSecondNum === true && secondNum !== '') {
+            result = operate(firstNum, secondNum, lastOperatorPressed);
+            lowerDisplay.textContent = result;
+            firstNum = result;
+            secondNum = '';
+            upperDisplay.textContent = firstNum;
+            upperDisplay.textContent += operator.textContent;
+        }
+
+        if(equalsPressed === true){
             result = operate(firstNum, secondNum, lastOperatorPressed);
             lowerDisplay.textContent = result;
             firstNum = result;
@@ -58,6 +68,7 @@ operators.forEach((operator) => {
 
         operatorPressed = true;
         waitingForSecondNum = true;
+        equalsPressed = false;
         lastOperatorPressed = operator.textContent;
     })
 })
@@ -78,8 +89,9 @@ equals.addEventListener('click', () => {
     else{
         lowerDisplay.textContent = result;
     }
+    equalsPressed = true;
     operatorPressed = false;
-    waitingForSecondNum = false;
+    waitingForSecondNum = true;
 })
 
 clear.addEventListener('click', function clear(){
