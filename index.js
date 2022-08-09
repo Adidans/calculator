@@ -38,6 +38,24 @@ operators.forEach((operator) => {
             upperDisplay.textContent += operation;
         }
 
+        if (operator.textContent === '-' && waitingForSecondNum === false){
+            firstNum = '0';
+            upperDisplay.textContent += firstNum;
+            upperDisplay.textContent = upperDisplay.textContent.replace('-', '');
+            lastOperatorPressed = '-';
+            upperDisplay.textContent += '-';
+            waitingForSecondNum = true;
+        }
+
+        if (operatorPressed === true && waitingForSecondNum === true) {
+            result = operate(firstNum, secondNum, lastOperatorPressed);
+            lowerDisplay.textContent = result;
+            firstNum = result;
+            secondNum = '';
+            upperDisplay.textContent = firstNum;
+            upperDisplay.textContent += operator.textContent;
+        }
+
         operatorPressed = true;
         waitingForSecondNum = true;
         lastOperatorPressed = operator.textContent;
@@ -80,7 +98,7 @@ del.addEventListener('click', () => {
 })
 
 function add(a, b) {
-    return parseInt(a)+parseInt(b);
+    return parseFloat(a)+parseFloat(b);
 }
 function subtract(a, b) {
     return a-b;
